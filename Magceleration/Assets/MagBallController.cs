@@ -15,6 +15,11 @@ public class MagBallController : MonoBehaviour
     public Text num;
 
     public string numString;
+    
+
+    //arduino stuff
+    private string latestMessage;
+    bool buttonPressed;
 
 
     // Start is called before the first frame update
@@ -43,6 +48,23 @@ public class MagBallController : MonoBehaviour
             positive = !positive;
             att.Plus = !att.Plus;
         }
+
+
+
+
+        //arduino
+        if (latestMessage == "0")
+        {
+            buttonPressed = false;
+        }
+        if (latestMessage == "1" && buttonPressed == false)
+        {
+            positive = !positive;
+            buttonPressed = true;
+        }
+
+
+
 
 
         numString = numOfChange.ToString();
