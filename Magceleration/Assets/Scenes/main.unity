@@ -1335,6 +1335,8 @@ MonoBehaviour:
   mc: {fileID: 556658935}
   reload: 0
   cd: 3
+  MyComPort: COM4
+  serialController: {fileID: 1066069025}
 --- !u!58 &1852432559
 CircleCollider2D:
   m_ObjectHideFlags: 0

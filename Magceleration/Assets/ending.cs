@@ -24,8 +24,8 @@ public class ending : MonoBehaviour
 
     public string MyComPort;
     public SerialPort serial;
+    public SerialController serialController;
 
-    public string endState;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +47,6 @@ public class ending : MonoBehaviour
 
         if (end)
         {
-            endState = "1";
 
             TurnOnLight(1);
             
@@ -61,7 +60,6 @@ public class ending : MonoBehaviour
 
         if (mc.numOfChange == 0 && !end)
         {
-            endState = "0";
 
             TurnOnLight(2);
 
@@ -101,10 +99,11 @@ public class ending : MonoBehaviour
 
     public void TurnOnLight(int LightNum)
     {
+        
         if (serial.IsOpen == false)
-            serial.Open();
-        if (LightNum == 1) serial.Write("A"); 
-        if (LightNum == 2) serial.Write("B");
+        { serial.Open(); }
+        if (LightNum == 1) { serialController.SendSerialMessage("A"); }
+        if (LightNum == 2) { serialController.SendSerialMessage("B"); }
 
     }
 
