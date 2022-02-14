@@ -12,6 +12,10 @@ public class attractor : MonoBehaviour
     public bool Plus;
 
 
+    //arduino stuff
+    private string latestMessage;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,4 +71,22 @@ public class attractor : MonoBehaviour
         rbToAttract.AddForce(-force);
     }
 
+    // Invoked when a line of data is received from the serial device.
+    void OnMessageArrived(string msg)
+    {
+        Debug.Log("Message arrived: " + msg);
+        latestMessage = msg.Trim(); //remove new line character at end of string
+
+    }
+
+    // Invoked when a connect/disconnect event occurs. The parameter 'success'
+    // will be 'true' upon connection, and 'false' upon disconnection or
+    // failure to connect.
+    void OnConnectionEvent(bool success)
+    {
+        if (success)
+            Debug.Log("Connection established");
+        else
+            Debug.Log("Connection attempt failed or disconnection detected");
+    }
 }
