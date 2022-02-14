@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO.Ports;
 
 public class ending : MonoBehaviour
 {
@@ -21,7 +22,10 @@ public class ending : MonoBehaviour
 
     public float cd = 3f;
 
+    public string MyComPort;
+    public SerialPort serial;
 
+    public string endState;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +33,9 @@ public class ending : MonoBehaviour
         tr = gameObject.GetComponent<Transform>();
 
         sr = gameObject.GetComponent<SpriteRenderer>();
+
+
+        serial = new SerialPort(MyComPort, 9600);
 
     }
 
@@ -40,7 +47,11 @@ public class ending : MonoBehaviour
 
         if (end)
         {
-            scale = rate * Time.deltaTime;
+            endState = "1";
+
+            TurnOnLight(1);
+            
+                scale = rate * Time.deltaTime;
 
             tr.localScale = new Vector2(tr.localScale.x + scale, tr.localScale.y + scale);
 
@@ -50,6 +61,10 @@ public class ending : MonoBehaviour
 
         if (mc.numOfChange == 0 && !end)
         {
+            endState = "0";
+
+            TurnOnLight(2);
+
             sr.color = new Color(1f, 0.175f, 0.3f, 1f);
 
             scale = rate * Time.deltaTime;
@@ -82,6 +97,15 @@ public class ending : MonoBehaviour
             end = true;
 
         }
+    }
+
+    public void TurnOnLight(int LightNum)
+    {
+        if (serial.IsOpen == false)
+            serial.Open();
+        if (LightNum == 1) serial.Write("A"); 
+        if (LightNum == 2) serial.Write("B");
+
     }
 
 }
