@@ -192,11 +192,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 668e4c202d0c85447a62dae15cd68adf, type: 3}
---- !u!1 &136181534 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5401496231797307834, guid: d36110e50a0da864bbcdbfb3e0669346, type: 3}
-  m_PrefabInstance: {fileID: 5401496230966523417}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &467058181
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,7 +704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portName: /dev/cu.usbmodem141201
   baudRate: 9600
-  messageListener: {fileID: 136181534}
+  messageListener: {fileID: 556658934}
   reconnectionDelay: 1000
   maxUnreadMessages: 1
 --- !u!1001 &1175923719
@@ -1946,7 +1941,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5401496231797307824, guid: d36110e50a0da864bbcdbfb3e0669346, type: 3}
   m_PrefabInstance: {fileID: 5401496230966523417}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136181534}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c61ee9da63784640a7059079cc86f3f, type: 3}
