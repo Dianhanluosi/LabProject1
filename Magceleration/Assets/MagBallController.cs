@@ -18,7 +18,7 @@ public class MagBallController : MonoBehaviour
     
 
     //arduino stuff
-    private string latestMessage;
+    public string latestMessage;
     bool buttonPressed;
 
 
@@ -39,25 +39,28 @@ public class MagBallController : MonoBehaviour
         {
             plus.gameObject.SetActive(false);
         }
-        if (numOfChange > 0 &&  Input.GetKeyDown(KeyCode.Space))
+        if (numOfChange > 0 && Input.GetKeyDown(KeyCode.Space))
         {
             numOfChange -= 1;
             positive = !positive;
             att.Plus = !att.Plus;
         }
 
-        
+
         //arduino
         if (latestMessage == "1")
         {
             buttonPressed = false;
         }
-        if (latestMessage == "0" && buttonPressed == false)
+        if (numOfChange > 0 && latestMessage == "0" && buttonPressed == false)
         {
+            numOfChange -= 1;
             positive = !positive;
             buttonPressed = true;
+            att.Plus = !att.Plus;
+
         }
-        
+
 
 
 
@@ -65,6 +68,7 @@ public class MagBallController : MonoBehaviour
         numString = numOfChange.ToString();
 
         num.text = numString;
+    }
 
 
     // Invoked when a line of data is received from the serial device.
@@ -75,5 +79,5 @@ public class MagBallController : MonoBehaviour
 
     }
 
-    }
+    
 }
