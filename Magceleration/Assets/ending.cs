@@ -103,7 +103,7 @@ public class ending : MonoBehaviour
         if (serial.IsOpen == false)
         { serial.Open(); }
         if (LightNum == 1) { serialController.SendSerialMessage("A"); }
-        if (LightNum == 2) { serialController.SendSerialMessage("B"); }
+        if (LightNum == 2) { serialController.SendSerialMessage("a"); }
 
     }
 
