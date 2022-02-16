@@ -48,20 +48,21 @@ public class ending : MonoBehaviour
         if (end)
         {
 
-            TurnOnLight(1);
             
                 scale = rate * Time.deltaTime;
 
             tr.localScale = new Vector2(tr.localScale.x + scale, tr.localScale.y + scale);
 
-            reload = true;
+            reload = true;            
+            
+            TurnOnLight(1);
+
         }
 
 
         if (mc.numOfChange == 0 && !end)
         {
 
-            TurnOnLight(2);
 
             sr.color = new Color(1f, 0.175f, 0.3f, 1f);
 
@@ -69,7 +70,10 @@ public class ending : MonoBehaviour
 
             tr.localScale = new Vector2(tr.localScale.x + scale, tr.localScale.y + scale);
 
-            reload = true;
+            reload = true;           
+            
+            TurnOnLight(2);
+
         }
 
         if (reload)
